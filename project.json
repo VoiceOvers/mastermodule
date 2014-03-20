@@ -1,0 +1,13 @@
+{
+  "name": "tinkerbell",
+  "path": {
+    "npm": "node_modules/",
+    "config": "config",
+    "log": "log",
+    "server": "server",
+    "test": "test"
+  },
+  "server": {
+    "port": 3000
+  }
+}

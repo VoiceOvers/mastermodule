@@ -1,0 +1,8 @@
+#
+# .slugignore
+#
+
+.git.*
+/log/
+npm-debug.log
+/test/

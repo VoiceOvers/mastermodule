@@ -1,4 +1,4 @@
-Jenkins-Module
-==============
+sosick-bootstrap
+================
 
-Jenkins Master Module Repository
+sosick-bootstrap

@@ -1,0 +1,12 @@
+#
+# .gitignore
+#
+
+*.sublime-project
+*.sublime-workspace
+.git.*
+/log/
+node_modules/
+npm-debug.log
+.tern-port
+.DS_STORE

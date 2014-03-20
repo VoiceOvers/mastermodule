@@ -1,0 +1,71 @@
+{
+  "name": "tinkerbell",
+  "description": "Starter repo with good defaults for Angular and Node.",
+  "version": "2.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Sosick Studios",
+    "email": "bryce@sosickstudios.com"
+  },
+  "homepage": "https://github.com/popasquat89/tinkerbell",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/popasquat89/tinkerbell"
+  },
+  "engines": {
+    "node": "0.11.12"
+  },
+  "keywords": [],
+  "dependencies": {
+    "co": "~3.0.x",
+    "co-body": "~0.0.x",
+    "colors": "~0.6.2",
+    "koa": "~0.5.x",
+    "koa-csrf": "~1.x.x",
+    "koa-sess": "~0.0.7",
+    "koa-compress": "~1.x.x",
+    "koa-favi": "~0.x.x",
+    "koa-livereload": "~0.1.x",
+    "koa-log4js": "~0.x.x",
+    "koa-qs": "~1.0.0",
+    "koa-redis": "~0.0.x",
+    "koa-router": "~2.x.x",
+    "koa-static": "~1.x.x",
+    "lodash": "~2.4.1",
+    "mkdirp": "~0.3.5",
+    "qs": "~0.6.x",
+    "randpass":"0.1.0",
+    "require-dir": "~0.1.x",
+    "redis": "~0.10.x",
+    "socket.io": "0.9.16",
+    "stripe": "~2.4.x",
+    "validator": "~3.2.x",
+    "wrench": "~1.5.4",
+    "xml2js": "~0.4.x",
+    "source-map-support": "~0.2.5",
+    "nodemon": "~1.0.15",
+    "gulp": "~3.5.x",
+    "gulp-load-plugins": "~0.4.0",
+    "gulp-cached": "0.0.3",
+    "gulp-plumber": "~0.5.6"
+  },
+  "devDependencies": {
+    "chai": "1.9.0",
+    "co": "3.0.5",
+    "gulp-bower": "0.0.x",
+    "gulp-git": "0.2.x",
+    "gulp-clean": "0.2.x",
+    "gulp-bump": "0.1.x",
+    "gulp-html2js": "0.0.x",
+    "gulp-if": "0.0.x",
+    "gulp-jshint": "~1.5.x",
+    "jshint-stylish": "~0.1.5",
+    "gulp-nodemon": "~1.0.0",
+    "mocha": "~1.16.x",
+    "mocha-as-generated": "1.0.x",
+    "should": "~2.1.x"
+  },
+  "scripts": {
+    "start": "nodemon --harmony-generators server"
+  }
+}
