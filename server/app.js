@@ -10,8 +10,7 @@ var http = require('http');
 var _ = require('lodash');
 var requireDir = require('require-dir');
 
-var koa = require('koa'),
-    socket = require('socket');
+var koa = require('koa');
 
 //Find out which environment we are preparing for.
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -84,7 +83,7 @@ app.run = function () {
   //HTTP Server
   var port = process.env.PORT || app.project.server.port || 3000;
   app.servers.http.httpServer = http.createServer(app.servers.koa.getServer().callback()).listen(port);
-  app.servers.socket.socketServer = socket(server);
+
     //Register our routes
   app.routes.register(app);
 
