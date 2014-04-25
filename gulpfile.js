@@ -12,7 +12,7 @@ gulp.task('lint', function () {
       '!' + project.path.npm
     ])
     .pipe($.cached('linting-server'))
-    .pipe($.jshint('server/.jshintrc'))
+    .pipe($.jshint(project.path.server + '/.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'));
 });
 

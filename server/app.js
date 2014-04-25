@@ -37,13 +37,9 @@ var app = {
         return this.koaServer;
       }
     },
-    socket: {
-      socketServer: null,
-      getServer: function () {
-        return this.socketServer;
-      }
-    }
-  }
+    socketio: null
+  },
+  system: null,
 };
 
 exports = module.exports = app; //This needs to be here, so everything else may initialize.
@@ -61,8 +57,7 @@ _.defaults(app.config, {
 
 //Attach All project specific middleware here.
 app.attachMiddleware = function() {
-  // Passport
-  //
+
   app.servers.koa.getServer().use(function *(next) {
     //This needs to set our csrf on this side.
     yield next;
@@ -73,8 +68,6 @@ app.attachMiddleware = function() {
 app.run = function () {
   // Connect to DB
   // app.lib.redisConnect.connect(app.config.db.redis);
-  //
-  console.log(app.config);
 
   //KOA server
   app.servers.koa.koaServer = koa();
@@ -86,6 +79,8 @@ app.run = function () {
 
     //Register our routes
   app.routes.register(app);
+
+  require('./socketio').registerTinkerbell();
 
   return app.servers.http.getServer();
 };

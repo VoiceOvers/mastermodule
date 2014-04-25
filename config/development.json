@@ -1,70 +1,14 @@
 {
-  "jenkins": "http://localhost:4545",
-  "api": {
-    "aws": {
-      "key": "@@@@@",
-      "secret": "@@@@@"
-    },
-    "facebook": {
-      "appId": "@@@@@",
-      "appSecret": "@@@@@"
-    },
-    "google": {
-      "clientId": "@@@@@",
-      "clientSecret": "@@@@@"
-    },
-    "rackspace": {
-      "username": "@@@@@",
-      "apiKey": "@@@@@"
-    },
-    "stripe": {
-      "secret": "",
-      "publishable": ""
-    },
-    "twitter": {
-      "accessToken": "@@@@@",
-      "accessTokenSecret": "@@@@@",
-      "consumerKey": "@@@@@",
-      "consumerSecret": "@@@@@"
-    }
-  },
+  "jenkins": "http://localhost:3001",
+  "module": "MODULEID",
   "cookie": {
     "secret": "tinkerBellzzzS3CRET"
   },
   "db": {
-    "mongo": {
-      "host": "",
-      "port": null,
-      "username": "",
-      "password": "",
-      "db": ""
-    },
     "redis": {
       "host": "",
       "port": null,
       "password": ""
-    }
-  },
-  "log": {
-    "_use": [
-      "console",
-      "sns"
-    ],
-    "transport": {
-      "console": {
-        "level": "debug"
-      },
-      "file": {
-        "level": "error"
-      },
-      "mongo": {
-        "level": "error"
-      },
-      "sns": {
-        "level": "error",
-        "subscriber": "@@@@@",
-        "topicArn": "@@@@@"
-      }
     }
   },
   "session": {
@@ -83,20 +27,5 @@
   },
   "socketio": {
     "store": "redis"
-  },
-  "storage": {
-    "_use": "s3",
-    "backend": {
-      "cloudFiles": {
-        "container": {
-          "main": "@@@@@"
-        }
-      },
-      "s3": {
-        "bucket": {
-          "main": "@@@@@"
-        }
-      }
-    }
   }
 }
