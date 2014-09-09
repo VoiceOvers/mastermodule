@@ -66,8 +66,6 @@ app.attachMiddleware = function() {
 
 // Run app.servers
 app.run = function () {
-  // Connect to DB
-  // app.lib.redisConnect.connect(app.config.db.redis);
 
   //KOA server
   app.servers.koa.koaServer = koa();
