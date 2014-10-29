@@ -1,6 +1,6 @@
 {
   "jenkins": "http://localhost:3001",
-  "module": "MODULEID",
+  "module": 1,
   "cookie": {
     "secret": "tinkerBellzzzS3CRET"
   },
