@@ -19,4 +19,10 @@ exports.register = function (app) {
             res.send(200);
         });
   });
+
+  s.get('/api/sendupdate', function (req, res){
+    var pi = require('./zigbee');
+
+    zigbee.sendUpdate();
+  });
 };
