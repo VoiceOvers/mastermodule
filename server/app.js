@@ -10,7 +10,7 @@ var http = require('http');
 var _ = require('lodash');
 var requireDir = require('require-dir');
 
-var koa = require('koa');
+var express = require('express');
 
 //Find out which environment we are preparing for.
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
@@ -31,10 +31,10 @@ var app = {
         return this.httpServer;
       }
     },
-    koa: {
-      koaServer: null,
+    express: {
+      expressServer: null,
       getServer: function () {
-        return this.koaServer;
+        return this.expressServer;
       }
     },
     socketio: null
@@ -58,27 +58,29 @@ _.defaults(app.config, {
 //Attach All project specific middleware here.
 app.attachMiddleware = function() {
 
-  app.servers.koa.getServer().use(function *(next) {
-    //This needs to set our csrf on this side.
-    yield next;
-  });
+  // app.servers.koa.getServer().use(function *(next) {
+  //   //This needs to set our csrf on this side.
+  //   yield next;
+  // });
 };
 
 // Run app.servers
 app.run = function () {
 
   //KOA server
-  app.servers.koa.koaServer = koa();
-  app.lib.middlewares.attachMiddleware(app);
+  app.servers.express.expressServer = express();
+  // app.lib.middlewares.attachMiddleware(app);
 
   //HTTP Server
   var port = process.env.PORT || app.project.server.port || 3000;
-  app.servers.http.httpServer = http.createServer(app.servers.koa.getServer().callback()).listen(port);
+  app.servers.http.httpServer = http.createServer(app.servers.express.getServer()).listen(port);
 
     //Register our routes
   app.routes.register(app);
 
   require('./socketio').registerTinkerbell();
+
+  console.log('Client Server Running on Port %d', port);
 
   return app.servers.http.getServer();
 };

@@ -21,6 +21,7 @@
     "co": "~3.0.x",
     "co-body": "~0.0.x",
     "colors": "~0.6.2",
+    "express": "^4.10.4",
     "google-speech-api": "^0.6.2",
     "gulp": "~3.5.x",
     "gulp-cached": "0.0.3",
