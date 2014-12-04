@@ -14,7 +14,6 @@ exports.register = function (app) {
   });
 
   s.get('/api/helper', function (req, res){
-    console.log('here');
     c.interpretation.impl.interpret('TurnOffShower')
         .then(function (){
             res.send(200);

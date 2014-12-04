@@ -45,7 +45,7 @@ var app = {
 exports = module.exports = app; //This needs to be here, so everything else may initialize.
 
 //Make the models and such available.
-app.lib = requireDir(app.dir + '/lib');
+// app.lib = requireDir(app.dir + '/lib');
 app.models = requireDir(app.dir + '/models');
 app.controllers = requireDir(app.dir + '/controllers');
 
