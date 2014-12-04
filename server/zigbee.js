@@ -1,5 +1,6 @@
 var wpi = require('wiring-pi');
 
+exports.impl = {};
 exports.impl.sendUpdate = function (){
     wpi.setup('gpio');
     wpi.wiringPisetupGpio();

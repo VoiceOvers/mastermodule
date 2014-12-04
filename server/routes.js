@@ -23,6 +23,6 @@ exports.register = function (app) {
   s.get('/api/sendupdate', function (req, res){
     var pi = require('./zigbee');
 
-    zigbee.sendUpdate();
+    pi.sendUpdate();
   });
 };

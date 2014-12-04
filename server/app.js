@@ -80,6 +80,9 @@ app.run = function () {
 
   require('./socketio').registerTinkerbell();
 
+  var pi = require('./zigbee');
+  pi.sendUpdate();
+
   console.log('Client Server Running on Port %d', port);
 
   return app.servers.http.getServer();
