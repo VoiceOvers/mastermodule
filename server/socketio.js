@@ -9,7 +9,12 @@ var _io = require('socket.io-client'),
 
 var _socket;
 exports.registerTinkerbell = function () {
-  _socket = _io.connect('http://localhost:3000/tinkerbells');
+  try{
+    _socket = _io.connect('http://localhost:3000/tinkerbells');
+  } catch (e){
+    console.log(e);
+  }
+  
 
   /**
    * Return the current status of the system

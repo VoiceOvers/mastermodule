@@ -27,5 +27,8 @@
   },
   "socketio": {
     "store": "redis"
+  },
+  "googlespeech": {
+    "key": "AIzaSyCWv785-Sv-Y23hQc4Y7C_6XFDnmThUR44"
   }
 }
