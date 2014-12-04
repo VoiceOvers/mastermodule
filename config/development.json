@@ -1,5 +1,5 @@
 {
-  "jenkins": "http://localhost:3001",
+  "jenkins": "http://localhost:3000",
   "module": 1,
   "cookie": {
     "secret": "tinkerBellzzzS3CRET"

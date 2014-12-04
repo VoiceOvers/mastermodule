@@ -13,16 +13,17 @@ exports.register = function (app) {
     console.log('test');
   });
 
+  var Promise = require('bluebird');
   s.get('/api/helper', function (req, res){
-    c.interpretation.impl.interpret('TurnOffShower')
+    c.interpretation.impl.interpret('ActivateEmergencyProfile')
         .then(function (){
             res.send(200);
         });
   });
 
-  s.get('/api/sendupdate', function (req, res){
-    var pi = require('./zigbee');
+  // s.get('/api/sendupdate', function (req, res){
+  //   var pi = require('./zigbee');
 
-    pi.sendUpdate();
-  });
+  //   pi.sendUpdate();
+  // });
 };

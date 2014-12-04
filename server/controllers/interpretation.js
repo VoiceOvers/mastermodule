@@ -2,6 +2,8 @@ var app = require('./../app');
 var Promise = require('bluebird');
 var speech = require('google-speech-api');
 var path = require('path');
+var _ = require('lodash');
+var socket = require('./../socketio');
 
 
 
@@ -19,25 +21,117 @@ exports.impl.interpret = function (name){
             if (err){
                 reject(err);
             }
-            
-            syntaxParser(results[0].result[0].alternative[0].transcript);
 
+            if(!results[0]) {
+                return resolve();
+            }
+
+            var phrase = results[0].result[0].alternative[0].transcript;
+
+            var update = new SyntaxParser(phrase)
+                .actionPhrase()
+                .components()
+                .variableAdjustment()
+                .value(); 
+
+            switch(update.component){
+                case 'emergency profile': 
+                    socket.activateEmergencyProfile();
+                    break;
+                case 'shower':
+                    socket.updateComponent();
+                    break;
+                default:
+                    console.log('In the wrong place.');
+                    break;
+            }
+            resolve();
         });        
     });
 };
 
-function syntaxParser (){
+function SyntaxParser (phrase){
+    this.actionObject = {
+        action: null,
+        component: null,
+        profile: null,
+        newPosition: null
+    };
+    this.phrase = phrase;
 
+    return this;
 }
 
-function actionPhrase (){
 
-}
+SyntaxParser.prototype.actionPhrase = function (){
+    var phrases = [
+        {say: 'turn on', action: true }, 
+        {say: 'turn off', action: false}, 
+        {say: 'activate', action: true }
+    ];
 
-function components (){
+    _.forEach(phrases, function (item){
+        var reg = new RegExp(item.say);
 
-}
+        if(reg.test(this.phrase)){
+            // Is this a ON / OFF phrase?
+            this.actionObject.action = item.action;
 
-function variableAdjustment (){
+            var newString = this.phrase.split(item.say);
 
-}
+            // Remove action phrase from string.
+            this.phrase = newString[1];
+        }
+    }, this);
+
+    return this;
+
+};
+
+SyntaxParser.prototype.components = function (){
+    var components = [
+        { say: 'shower' },
+        { say: 'emergency profile' }
+    ];
+
+    _.forEach(components, function (item){
+        var reg = new RegExp(item.say);
+
+        if(reg.test(this.phrase)){
+            this.actionObject.component = item.say;
+
+            var newString = this.phrase.split(item.say);
+
+            // Remove component phrase
+            this.phrase = newString[1];
+        }
+    }, this);
+
+    return this;
+};
+
+SyntaxParser.prototype.variableAdjustment = function (){
+    var phrases = [
+        'position'
+    ];
+
+    if(!this.phrase.length){
+        return this;
+    }
+
+    // Do variable position interpretation
+    _.forEach(phrases, function (item){
+        var reg = new RegExp(item);
+
+        if(reg.test(this.phrase)){
+            var tempString = this.phrase.split(item)[1];
+            var position = parseInt(tempString);
+            this.actionObject.newPosition = position;
+        }
+    }, this);
+    return this;
+};
+
+SyntaxParser.prototype.value = function (){
+    return this.actionObject;
+};

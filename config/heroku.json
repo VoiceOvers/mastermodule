@@ -1,5 +1,5 @@
 {
-  "jenkins": "http://localhost:3001",
+  "jenkins": "http://leeroyjenkins.herokuapp.com",
   "module": "MODULEID",
   "cookie": {
     "secret": "tinkerBellzzzS3CRET"
