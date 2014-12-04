@@ -13,4 +13,11 @@ exports.register = function (app) {
     console.log('test');
     yield next;
   });
+
+  s.get('/api/helper', function *(next){
+    var result = yield c.interpretation.impl.interpret('TurnOffShower');
+
+    console.log(result);
+    yield next;
+  });
 };
