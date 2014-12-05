@@ -21,7 +21,7 @@ exports.register = function (app) {
         });
   });
 
-  // s.get('/api/sendupdate', function (req, res){
+  // s.get('/api/', function (req, res){
   //   var pi = require('./zigbee');
 
   //   pi.sendUpdate();
