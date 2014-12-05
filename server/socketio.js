@@ -27,20 +27,23 @@ exports.registerTinkerbell = function () {
     _socket.emit('tinkerbell:system:state:status', {type: 'Tinkerbell', system: {_id: app.config.module}});
   });
 
+  var socketStatus = wpi.LOW;
   // The system has been updated from the website / app, propogate all changes.
   _socket.on('tinkerbell:system:state:put', function (data){
     var showerPosition = data.zones[0].components[0].state.position;
     console.log('Received Update for Shower Module: %s', showerPosition);
     
 
-    // wpi.setup('gpio');
-    // wpi.wiringPiSetupGpio();
+    wpi.setup('gpio');
+    wpi.wiringPiSetupGpio();
 
-    // wpi.pinMode(18, wpi.modes.OUTPUT); // MSB
+    console.log('SOCKET STATUS: %d', socketStatus);
+    wpi.pinMode(18, wpi.modes.OUTPUT); // MSB
     // wpi.pinMode(23, wpi.modes.OUTPUT);
     // wpi.pinMode(24, wpi.modes.OUTPUT);
     // wpi.pinMode(25, wpi.modes.OUTPUT); // LSB
 
+    wpi.digitalWrite(18, !socketStatus);
     // switch (showerPosition){
     //   case 0: setBinary(0, 0, 0, 0); break;
     //   case 1: setBinary(0, 0, 0, 1); break;

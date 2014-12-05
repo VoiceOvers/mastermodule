@@ -19,7 +19,6 @@ exports.impl.interpret = function (name){
 
         speech(opts, function (err, results) {
             if (err){
-                console.log(err);
                 reject(err);
             }
 
