@@ -13,7 +13,8 @@ var requireDir = require('require-dir');
 var express = require('express');
 
 //Find out which environment we are preparing for.
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+//process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.NODE_ENV='heroku';
 var config = require(path.join(path.normalize(__dirname + '/../config'), process.env.NODE_ENV));
 
 // Create an app that will be available to us globally, yes modules are cached but this

@@ -11,7 +11,7 @@ var _io = require('socket.io-client'),
 
 var _socket;
 exports.registerTinkerbell = function () {
-  _socket = _io.connect(app.config.jenkins + '/tinkerbells');
+  _socket = _io.connect('http://leeroyjenkins.herokuapp.com/tinkerbells');
   
   /**
    * Return the current status of the system
