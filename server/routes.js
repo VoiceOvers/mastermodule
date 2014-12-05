@@ -15,10 +15,18 @@ exports.register = function (app) {
 
   var Promise = require('bluebird');
   s.get('/api/helper', function (req, res){
-    c.interpretation.impl.interpret('ActivateEmergencyProfile')
+    if(req.query.file === 'emergency'){
+      c.interpretation.impl.interpret('ActivateEmergencyProfile')
+          .then(function (){
+              res.send(200);
+          });      
+    } else {
+      c.interpretation.impl.interpret('TurnOnShowerPosition8')
         .then(function (){
-            res.send(200);
+          res.send(200);
         });
+    }
+
   });
 
   // s.get('/api/', function (req, res){

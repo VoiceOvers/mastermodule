@@ -13,8 +13,8 @@ var requireDir = require('require-dir');
 var express = require('express');
 
 //Find out which environment we are preparing for.
-//process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-process.env.NODE_ENV='heroku';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// process.env.NODE_ENV='heroku';
 var config = require(path.join(path.normalize(__dirname + '/../config'), process.env.NODE_ENV));
 
 // Create an app that will be available to us globally, yes modules are cached but this
@@ -81,8 +81,8 @@ app.run = function () {
 
   require('./socketio').registerTinkerbell();
 
-  var pi = require('./zigbee');
-  pi.impl.pi();
+  // var pi = require('./zigbee');
+  // pi.impl.pi();
 
   console.log('Client Server Running on Port %d', port);
 

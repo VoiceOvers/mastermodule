@@ -19,6 +19,7 @@ exports.impl.interpret = function (name){
 
         speech(opts, function (err, results) {
             if (err){
+                console.log(err);
                 reject(err);
             }
 
@@ -27,7 +28,7 @@ exports.impl.interpret = function (name){
             }
 
             var phrase = results[0].result[0].alternative[0].transcript;
-
+            console.log('Parsed Audio Input: %s', phrase);
             var update = new SyntaxParser(phrase)
                 .actionPhrase()
                 .components()
